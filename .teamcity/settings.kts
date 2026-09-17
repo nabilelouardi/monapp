@@ -1,4 +1,8 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetPublish
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetRestore
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetTest
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -23,16 +27,11 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 'Debug' option is available in the context menu for the task.
 */
 
-import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
-import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetRestore
-import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetTest
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
-
 version = "2026.2"
 
 project {
     buildType(Build)
+    buildType(Package)
 }
 
 object Build : BuildType({
@@ -69,5 +68,31 @@ object Build : BuildType({
 
     failureConditions {
         executionTimeoutMin = 15
+    }
+})
+
+object Package : BuildType({
+    name = "Package"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    artifactRules = "out => monapp-%build.number%.zip"
+
+    steps {
+        dotnetPublish {
+            name = "Publish"
+            projects = "src/MonApp.Api/MonApp.Api.csproj"
+            configuration = "Release"
+            outputDir = "out"
+            args = "-p:Version=1.0.%build.number%"
+        }
+    }
+
+    dependencies {
+        snapshot(Build) {
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
     }
 })
