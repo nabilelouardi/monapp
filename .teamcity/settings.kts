@@ -23,10 +23,15 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 'Debug' option is available in the context menu for the task.
 */
 
+import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetRestore
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetTest
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
+
 version = "2026.2"
 
 project {
-
     buildType(Build)
 }
 
@@ -37,8 +42,32 @@ object Build : BuildType({
         root(DslContext.settingsRoot)
     }
 
+    steps {
+        dotnetRestore {
+            name = "Restore"
+            projects = "MonApp.slnx"
+        }
+        dotnetBuild {
+            name = "Build"
+            projects = "MonApp.slnx"
+            configuration = "Release"
+            args = "--no-restore"
+        }
+        dotnetTest {
+            name = "Test"
+            projects = "MonApp.slnx"
+            configuration = "Release"
+            args = "--no-build"
+        }
+    }
+
     triggers {
         vcs {
+            branchFilter = "+:*"
         }
+    }
+
+    failureConditions {
+        executionTimeoutMin = 15
     }
 })
