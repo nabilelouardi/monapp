@@ -1,0 +1,1 @@
+<R/C:\labs\monapp\src\MonApp.Api\MonApp.Api.csprojòCSharp14

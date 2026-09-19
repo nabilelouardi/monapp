@@ -1,7 +1,8 @@
 root = true
 
 [*.cs]
-# CA1852 : sceller les types internes, perf mineure -> suggestion le temps de traiter le legacy
 dotnet_diagnostic.CA1852.severity = suggestion
-# Toute la categorie Securite reste bloquante
 dotnet_analyzer_diagnostic.category-Security.severity = error
+
+[tests/**.cs]
+dotnet_diagnostic.CA1707.severity = none

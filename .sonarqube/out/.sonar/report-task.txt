@@ -1,0 +1,6 @@
+projectKey=monapp
+serverUrl=http://localhost:9000
+serverVersion=26.9.0.129388
+dashboardUrl=http://localhost:9000/dashboard?id=monapp
+ceTaskId=e4fd0a5a-c434-4978-b915-69f52c582574
+ceTaskUrl=http://localhost:9000/api/ce/task?id=e4fd0a5a-c434-4978-b915-69f52c582574

@@ -1,0 +1,1 @@
+C:\labs\monapp\.sonarqube\out\1

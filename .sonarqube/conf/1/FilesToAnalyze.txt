@@ -1,0 +1,7 @@
+﻿C:\labs\monapp\tests\MonApp.Tests\UnitTest1.cs
+C:\Users\nabil\.nuget\packages\microsoft.net.test.sdk\17.14.1\build\net8.0\Microsoft.NET.Test.Sdk.Program.cs
+C:\Users\nabil\.nuget\packages\microsoft.testplatform.testhost\17.14.1\build\net8.0\x64\testhost.exe
+C:\Users\nabil\.nuget\packages\microsoft.testplatform.testhost\17.14.1\build\net8.0\x64\testhost.dll
+C:\Users\nabil\.nuget\packages\xunit.runner.visualstudio\3.1.4\build\net8.0\xunit.abstractions.dll
+C:\Users\nabil\.nuget\packages\xunit.runner.visualstudio\3.1.4\build\net8.0\xunit.runner.visualstudio.testadapter.dll
+C:\labs\monapp\tests\MonApp.Tests\TestResults\080b2b19-9dff-42f9-9133-75c8313a66f3\coverage.opencover.xml

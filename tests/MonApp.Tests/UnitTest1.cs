@@ -1,10 +1,18 @@
-﻿namespace MonApp.Tests;
+using Microsoft.AspNetCore.Mvc.Testing;
 
-public class UnitTest1
+namespace MonApp.Tests;
+
+public class HealthTests : IClassFixture<WebApplicationFactory<Program>>
 {
-    [Fact]
-    public void Test1()
-    {
+    private readonly WebApplicationFactory<Program> _factory;
+    public HealthTests(WebApplicationFactory<Program> factory) => _factory = factory;
 
+    [Fact]
+    public async Task Healthz_Returns_Ok()
+    {
+        var client = _factory.CreateClient();
+        var response = await client.GetAsync("/healthz");
+        response.EnsureSuccessStatusCode();
+        Assert.Equal("ok", await response.Content.ReadAsStringAsync());
     }
 }
