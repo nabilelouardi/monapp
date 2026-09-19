@@ -26,3 +26,4 @@ C:\labs\monapp\src\MonApp.Api\obj\Debug\net10.0\refint\MonApp.Api.dll
 C:\labs\monapp\src\MonApp.Api\obj\Debug\net10.0\MonApp.Api.pdb
 C:\labs\monapp\src\MonApp.Api\obj\Debug\net10.0\MonApp.Api.genruntimeconfig.cache
 C:\labs\monapp\src\MonApp.Api\obj\Debug\net10.0\ref\MonApp.Api.dll
+C:\labs\monapp\src\MonApp.Api\obj\Debug\net10.0\MonApp.Api.sourcelink.json
